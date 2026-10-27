@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xiao Ming</title>
+    <style>
+      /* 页面整体背景用浅紫色，
+         这样白色的卡片才能和背景区分开 */
+      body{
+        background-color: #F5EEFA;
+      }
+
+      /* 所有标题（h1 和 h2）统一使用相同样式，
+         保证整个页面结构清晰、风格一致 */
+
+      h1{
+        color: #660874;            /* 清华紫（Tsinghua Purple） */
+        font-weight: bold;         /* 标题加粗 */
+        background-color: #F0E6F6; /* 浅紫色背景 */
+        padding: 8px;              /* 内边距，让文字与背景边缘留出空隙 */
+      }
+
+      h2{
+        color: #660874;            /* 清华紫（Tsinghua Purple） */
+        font-weight: bold;         /* 标题加粗 */
+        /*background-color: #F0E6F6; !* 浅紫色背景 *!*/
+        padding: 8px;              /* 内边距，让文字与背景边缘留出空隙 */
+      }
+
+      /* 卡片样式：三个部分（About Me / Skills / Contact）
+         都使用同一个 card 类，写一次样式即可反复使用 */
+      .card{
+        background-color: #FFFFFF; /* 白色背景 */
+        padding: 16px;             /* 内边距：卡片边缘与内容之间留空隙 */
+        margin: 16px;              /* 外边距：卡片与卡片之间留空隙 */
+        border-radius: 10px;       /* 简单圆角，让卡片看起来更柔和 */
+      }
+
+      /* 头像容器：负责把头像水平居中 */
+      .avatar-box{
+        text-align: center;        /* 让内部的图片、文字水平居中 */
+        padding-top: 16px;         /* 与页面顶部留一点距离 */
+      }
+
+      /* 圆形头像 */
+      .avatar{
+        width: 120px;              /* 固定宽和高，两者相等才能是正圆 */
+        height: 120px;
+        border-radius: 50%;        /* 圆角设为 50%，图片就变成圆形 */
+        object-fit: cover;         /* 裁剪填充：保持原图比例，不会被拉伸变形 */
+      }
+
+      /* “No Photo” 备用提示：默认隐藏，
+         只有当 profile.jpg 加载失败时才显示 */
+      .no-photo{
+        display: none;             /* 默认不显示 */
+        width: 120px;              /* 尺寸与头像一致，替代时不跳动 */
+        height: 120px;
+        line-height: 120px;        /* 行高等于高度，文字正好垂直居中 */
+        margin: 0 auto;            /* 左右 auto，实现水平居中 */
+        border-radius: 50%;        /* 也做成圆形，与头像保持一致 */
+        background-color: #E5D5EF; /* 浅紫色圆形底 */
+        color: #660874;            /* 清华紫文字 */
+        font-weight: bold;         /* 文字加粗 */
+      }
+    </style>
+</head>
+
+<body>
+<!--头像区域：位于姓名上方，水平居中-->
+  <div class="avatar-box">
+    <!--头像图片：来自当前目录的 profile.jpg；
+        onerror 在图片加载失败（文件不存在等）时触发，
+        隐藏图片并把 No Photo 提示显示出来-->
+    <img class="avatar" src="profile.jpg" alt="Xiao Ming 的头像"
+         onerror="this.style.display='none';
+                  document.getElementById('no-photo').style.display='block';">
+    <!--备用文字：平时隐藏，头像加载失败时才出现-->
+    <p class="no-photo" id="no-photo">No Photo</p>
+  </div>
+
+<!--一级标题Xiao Ming 小明（不放入卡片）-->
+  <h1>Xiao Ming 小明</h1>
+
+<!--卡片1：About Me-->
+  <div class="card">
+    <h2>About Me</h2>
+    <!--段落1: 交代学校；本科生-->
+    <p>I am an undergraduate at Tsinghua University.</p>
+    <!--段落2: 专业-->
+    <p>I major in Journalism and Communication.</p>
+  </div>
+
+<!--卡片2：Skills-->
+  <div class="card">
+    <h2>Skills</h2>
+    <!--段落3: 列出四项技能-->
+    <p>I am familiar with Python, C, HTML and JavaScript.</p>
+  </div>
+
+<!--卡片3：Contact-->
+  <div class="card">
+    <h2>Contact</h2>
+    <!--段落4: 示例邮箱-->
+    <p>Email: xiaoming@example.com</p>
+    <!--段落5: 示例 GitHub 地址-->
+    <p>GitHub: https://github.com/xiaoming</p>
+  </div>
+
+</body>
+</html>
